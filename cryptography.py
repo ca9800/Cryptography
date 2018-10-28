@@ -21,18 +21,18 @@ def encryption(t):
     h=0
     wa=[]
     for i in t:
-        wa.append(associations.index(i))
+        (wa.append(associations.index(i)))
     
     
     #turns key messsage to numbers
     m=[]
     for i in enkey:
-        m.append(associations.index(i))
+        (m.append((associations.index(i))))
     
     #adds numbers together
     l=[]
     while h<len(wa):
-        l.append((wa[h]+m[h%len(m)])%len(associations))
+        (l.append((wa[h]+m[h%len(m)])%len(associations)))
         h=h+1
         
         
@@ -40,7 +40,7 @@ def encryption(t):
     h=0
     d=[]
     while h<len(l):
-        d.append(associations[l[h]])
+        (d.append(associations[l[h]]))
         h=h+1
     
     
@@ -58,20 +58,20 @@ def decryption(d):
     d=list(d)
     l=[]
     for i in d:
-        l.append(associations.index(i))
+        (l.append(associations.index(i)))
     m=[]
     for i in enkey:
-        m.append(associations.index(i))
+        (m.append(associations.index(i)))
     
     h=0
     wa=[]
     while h<len(l):
-        wa.append((l[h]-m[h%len(m)])%len(associations))
+        (wa.append(((l[h]-m[h%len(m)])%len(associations))))
         h=h+1
     h=0
     t=[]
     while h<len(wa):
-        t.append(associations[wa[h]])
+        (t.append(associations[wa[h]]))
         h=h+1
     a=""
     for i in t:
@@ -82,16 +82,16 @@ def decryption(d):
     
     
 def requesting_ans():
-    req=input("Enter e to encrypt, d to decrypt, or q to quit: ")
-    if req=="e":
-        mess=str(input("Message: "))
-        encryption(mess)
+    put=input("Enter e to encrypt, d to decrypt, or q to quit: ")
+    if put=="e":
+        text=str(input("Message: "))
+        encryption(text)
         requesting_ans()
-    elif req=="d":
-        mess=str(input("Message: "))
-        decryption(mess)
+    elif put=="d":
+        text=str(input("Message: "))
+        decryption(text)
         requesting_ans()
-    elif req=="q":
+    elif put=="q":
         print("Goodbye!")
         return()
     else:
