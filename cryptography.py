@@ -1,7 +1,7 @@
 """
 cryptography.py
-Author: <your name here>
-Credit: <list sources used, if any>
+Author: Claire
+Credit: none
 
 Assignment:
 
@@ -13,8 +13,8 @@ associations = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .
 associations=list(associations)
 
 
-def encrypt(t):
-    key=input("Key: ")
+def encryption(t):
+    enkey=input("Key: ")
     
     #turns input message to numbers
     t=list(t)
@@ -26,7 +26,7 @@ def encrypt(t):
     
     #turns key messsage to numbers
     m=[]
-    for i in key:
+    for i in enkey:
         m.append(associations.index(i))
     
     #adds numbers together
@@ -53,14 +53,14 @@ def encrypt(t):
     return(a)
 
 
-def decrypt(d):
-    key=str(input("Key: "))
+def decryption(d):
+    enkey=str(input("Key: "))
     d=list(d)
     l=[]
     for i in d:
         l.append(associations.index(i))
     m=[]
-    for i in key:
+    for i in enkey:
         m.append(associations.index(i))
     
     h=0
@@ -85,11 +85,11 @@ def requesting_ans():
     req=input("Enter e to encrypt, d to decrypt, or q to quit: ")
     if req=="e":
         mess=str(input("Message: "))
-        encrypt(mess)
+        encryption(mess)
         requesting_ans()
     elif req=="d":
         mess=str(input("Message: "))
-        decrypt(mess)
+        decryption(mess)
         requesting_ans()
     elif req=="q":
         print("Goodbye!")
