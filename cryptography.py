@@ -1,7 +1,7 @@
 """
 cryptography.py
-Author: Claire
-Credit: 
+Author: <your name here>
+Credit: <list sources used, if any>
 
 Assignment:
 
@@ -13,100 +13,83 @@ associations = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .
 associations=list(associations)
 
 
-def encryption(x):
-    enkey = input("Key: ")
+def encrypt(t):
+    key=input("Key: ")
     
     #turns input message to numbers
-    x = list(x)
-    a = 0
-    b = []
-    
-    for m in x:
-        (x.append(associations.index(m)))
+    t=list(t)
+    h=0
+    wa=[]
+    for i in t:
+        wa.append(associations.index(i))
     
     
     #turns key messsage to numbers
-    c = []
-    for m in enkey:
-        (c.append(associations.index(m)))
+    m=[]
+    for i in key:
+        m.append(associations.index(i))
     
     #adds numbers together
-    d = []
-    
-    while a < len (b):
-        d.append((b[a]+c[a%len(d)])%len(associations))
-        x=x+1
-    
+    l=[]
+    while h<len(wa):
+        l.append((wa[h]+m[h%len(m)])%len(associations))
+        h=h+1
+        
+        
     #turns numbers back to letters
-    x = 0
-    e = []
+    h=0
+    d=[]
+    while h<len(l):
+        d.append(associations[l[h]])
+        h=h+1
     
-    while x<len(c):
-        (e.append(associations[c[x]]))
-        x=x+1
-    
-    
-    #turns to a list 
-    k = ""
-    for m in e:
-        k=k+m
-    print (k)
-    return (k)
-    
-    
-def decryption(e):
-    enkey = input("Key: ")
-    
-    #turns input message to numbers
-    x = list(x)
-    a = 0
-    b = []
-    #enkey = (str(input("Key: ")))
-    #e = list(c)
-    #c = []
-    
-    for m in x:
-        (x.append(associations.index(m)))
-    
-    
-    #turns key messsage to numbers
-    c = []
-    for m in enkey:
-        c.append(associations.index(m))
-    
-    #adds numbers together
-    d = []
-    
-    while a < len (b):
-        d.append((b[a]+c[a%len(d)])%len(associations))
-        x=x+1
-    
-    #turns numbers back to letters
-    x = 0
-    e = []
-    
-    while x<len(c):
-        e.append(associations[c[x]])
-        x=x+1
-    
-    
-    #turns to a list 
-    k = ""
-    for m in e:
-        k=k+m
-    print (k)
-    return (k)
     
 
+    #turns to a list 
+    a=""
+    for i in d:
+        a=a+i
+    print(a)
+    return(a)
+
+
+def decrypt(d):
+    key=str(input("Key: "))
+    d=list(d)
+    l=[]
+    for i in d:
+        l.append(associations.index(i))
+    m=[]
+    for i in key:
+        m.append(associations.index(i))
+    
+    h=0
+    wa=[]
+    while h<len(l):
+        wa.append((l[h]-m[h%len(m)])%len(associations))
+        h=h+1
+    h=0
+    t=[]
+    while h<len(wa):
+        t.append(associations[wa[h]])
+        h=h+1
+    a=""
+    for i in t:
+        a=a+i
+    print(a)
+    return(a)
+    
+    
+    
 def requesting_ans():
     req=input("Enter e to encrypt, d to decrypt, or q to quit: ")
     if req=="e":
         mess=str(input("Message: "))
-        encryption(mess)
+        encrypt(mess)
         requesting_ans()
     elif req=="d":
         mess=str(input("Message: "))
-        decryption(mess)
+        decrypt(mess)
         requesting_ans()
     elif req=="q":
         print("Goodbye!")
@@ -116,7 +99,3 @@ def requesting_ans():
         requesting_ans()
         
 requesting_ans()
-    
-    
-    
-        
